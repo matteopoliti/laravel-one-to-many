@@ -12,6 +12,12 @@
 
         <p>{{ $project->description }}</p>
 
+        @if ($project->type)
+            <p>Type: {{ $project->type->type }}</p>
+        @else
+            <p>Type: No type </p>
+        @endif
+
         @if ($project->project_start_date)
             <p>Progetto iniziato il: {{ $project->project_start_date }}</p>
         @endif

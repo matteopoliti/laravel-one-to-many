@@ -45,6 +45,21 @@
             </div>
 
             <div class="mb-3">
+                <label for="type_id" class="form-label">Types</label>
+                <select class="form-select @error('type_id')
+                    is-invalid
+                    @enderror"
+                    name="type_id" id="type_id">
+                    <option>Select One</option>
+                    @foreach ($types as $item)
+                        <option value="{{ $item->id }}"
+                            {{ $item->id == old('type_id', $project->type ? $project->type->id : '') ? 'selected' : '' }}>
+                            {{ $item->type }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea class="form-control" id="description" name="description" rows="3">{{ old('description') ?? $project->description }}</textarea>
             </div>
